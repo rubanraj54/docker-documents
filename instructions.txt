@@ -49,3 +49,31 @@ To see all the running docker containers, use "docker ps" command
 To kill a running docker container, use "docker kill '_first_few_characters_of_container_id'"
 
 To see all the running and exited container, use "docker ps -a"
+
+To run more commands inside the container,
+use "docker run -it busybox sh"
+
+this command create container and load busybox in it and give a shell access to the container.
+
+then for example,
+run ls command to list of contents
+run ps command to list the currently running process
+run uptime which givess the current time and how much time the system is up and running
+
+Every time we run the container, it will create and load new files,
+to check this, run "rm -rf bin" which deletes the bin folder in the container and try ls command or uptime command. it wont work.
+Now "exit" from container and run it again.
+Now do "ls", we get everything back now.
+
+Even after exiting the container, docker ps -a show the list of containers which consumes some memory space.
+As a thumb rule, delete the containers after using it. docker rm "container1 container2....."
+
+If you want to remove a docker after exiting from it, use --rm flag while running any container.
+e.g. docker run --rm -it busybox sh
+this --rm flag removes the container after we exit from it.
+
+If you want to remove an image, run this command.
+docker rmi "image name"
+e.g docker rmi busybox
+
+After removing this image, if you try to run this image, docker will pull the latest image from the hub and install it and run the images.
