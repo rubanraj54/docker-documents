@@ -75,5 +75,7 @@ this --rm flag removes the container after we exit from it.
 If you want to remove an image, run this command.
 docker rmi "image name"
 e.g docker rmi busybox
+Note: remove all the current docker instance (containers) respective to that image and then remove the root image.
+e.g if you would like to remove an image called "hello-world", but you have an instance of it already. In this case, use "docker rm container_name", to remove the specific container and now we are free to delete the downloaded image completely.
 
 After removing this image, if you try to run this image, docker will pull the latest image from the hub and install it and run the images.
